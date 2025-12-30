@@ -1,64 +1,115 @@
-<div class="min-h-screen flex flex-col items-center justify-center text-center
-            bg-gradient-to-b from-[#3383cd] to-black text-white">
+<div class="relative min-h-screen overflow-hidden">
+    <!-- Fondo degradado -->
+    <div class="fixed inset-0 -z-30 bg-gradient-to-b from-[#3383cd] to-black"></div>
 
-    <h1 class="text-4xl font-bold">Dana Vargas Portfolio</h1>
-    <h3 class="mt-2 text-lg text-white/80">
-        From backend depths to smooth user experiences
-    </h3>
+    <!-- Imagen PNG -->
+    <div class="fixed inset-0 -z-20
+           bg-[url('/assets/images/cardumen.png')]
+           bg-cover bg-center bg-no-repeat
+           opacity-40">
+    </div>
+    <app-fish-background></app-fish-background>
+    <div class="relative z-10 min-h-screen flex flex-col items-center text-center text-white
+            pt-16 sm:pt-24 pb-16 sm:pb-24">
 
-    <div class="relative w-full mt-10 flex flex-col items-center">
+        <h1 class="text-4xl font-bold">Dana Vargas Portfolio</h1>
+        <h3 class="mt-2 text-lg text-white/80">
+            From backend depths to smooth user experiences
+        </h3>
 
-        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEM3NQXHLpnFw/profile-displayphoto-crop_800_800/B4EZtJQ_pdGcAI-/0/1766460751228?e=1768435200&v=beta&t=u-5JBu8iQ56encgfU4Q6lX7o8rD84H0ngqEVVZnSM3U"
-            alt="profile photo" class="h-40 w-40 rounded-full object-cover
+        <div class="relative w-full mt-10 flex flex-col items-center">
+
+            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEM3NQXHLpnFw/profile-displayphoto-crop_800_800/B4EZtJQ_pdGcAI-/0/1766460751228?e=1768435200&v=beta&t=u-5JBu8iQ56encgfU4Q6lX7o8rD84H0ngqEVVZnSM3U"
+                alt="profile photo" class="h-40 w-40 rounded-full object-cover
              border-4 border-white z-10" />
 
-        <div class="w-full bg-white/25 
+            <div class="w-full bg-white/20 
                 mt-[-80px] pt-24 pb-10 px-6">
 
-            <p class="max-w-2xl mx-auto leading-relaxed">
-                I’m a full-stack software developer with experience building enterprise web applications using Angular
-                and .NET.
-                I focus on backend development, automation, and delivering user-centered interfaces. Most of my work
-                involves
-                internal systems, ERP customizations, and process automation.
-            </p>
+                <p class="max-w-2xl mx-auto leading-relaxed">
+                    I’m a full-stack software developer with experience building enterprise web applications using
+                    Angular
+                    and .NET.
+                    I focus on backend development, automation, and delivering user-centered interfaces. Most of my work
+                    involves
+                    internal systems, ERP customizations, and process automation.
+                </p>
 
-        </div>
-    </div>
-
-    <div class="w-full max-w-6xl px-6 mt-16">
-        <h2 class="text-3xl font-bold text-center mb-10">Projects</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            @for (p of projects; track p.title) {
-            <app-project-card [title]="p.title" [imageSrc]="p.imageSrc" [imageAlt]="p.imageAlt"
-                [techIcons]="p.techIcons" (cardClick)="openProject(p)">
-            </app-project-card>
-            }
-        </div>
-    </div>
-
-    <div class="w-full max-w-5xl px-6 mt-20 pb-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
-
-        <div class="bg-white/15 rounded-2xl px-6 py-8">
-            <div class="flex flex-wrap justify-center gap-6">
-                <img src="assets/icons/angular.svg" alt="Angular"
-                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/dotnet.svg" alt=".NET"
-                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/postgres.png" alt="PostgreSQL"
-                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/docker.png" alt="Docker"
-                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/git.png" alt="Git" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/n8n.png" alt="n8n" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/odoo.png" alt="Odoo" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-                <img src="assets/icons/wordpress.png" alt="WordPress"
-                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
             </div>
         </div>
+
+        <div class="w-full max-w-6xl px-6 mt-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @for (p of projects; track p.title) {
+                <app-project-card [title]="p.title" [imageSrc]="p.imageSrc" [imageAlt]="p.imageAlt"
+                    [techIcons]="p.techIcons" (cardClick)="openProject(p)">
+                </app-project-card>
+                }
+            </div>
+        </div>
+
+        <div class="w-full max-w-5xl px-6 mt-20 pb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
+
+            <div class="bg-white/15 rounded-2xl px-6 py-8">
+                <div class="flex flex-wrap justify-center gap-6">
+                    <img src="assets/icons/angular.svg" alt="Angular"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="Angular" />
+                    <img src="assets/icons/dotnet.svg" alt=".NET"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip=".NET" />
+                    <img src="assets/icons/postgres.png" alt="PostgreSQL"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="PostgreSQL" />
+                    <img src="assets/icons/docker.png" alt="Docker"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="Docker" />
+                    <img src="assets/icons/git.png" alt="Git" class="h-10 w-10 opacity-80 hover:opacity-100 transition"
+                        matTooltip="Git" />
+                    <img src="assets/icons/n8n.png" alt="n8n" class="h-10 w-10 opacity-80 hover:opacity-100 transition"
+                        matTooltip="n8n" />
+                    <img src="assets/icons/odoo.png" alt="Odoo"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="Odoo" />
+                    <img src="assets/icons/wordpress.png" alt="WordPress"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="Wordpress" />
+                    <img src="assets/icons/figma.png" alt="Figma"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="Figma" />
+                    <img src="assets/icons/canva.svg" alt="Canva"
+                        class="h-10 w-10 opacity-80 hover:opacity-100 transition" matTooltip="Canva" />
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-5xl px-6 mt-20 pb-24">
+            <h2 class="text-3xl font-bold text-center mb-6">Contact</h2>
+
+            <p class="text-center text-white/80 max-w-2xl mx-auto mb-10">
+                Interested in working together or want to know more about my experience?
+                Feel free to reach out through any of the channels below.
+            </p>
+
+            <div>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-8">
+
+                    <!-- Email -->
+                    <a href="mailto:dmvavellanas@gmail.com"
+                        class="flex items-center gap-3 text-white/90 hover:text-white transition">
+                        <img src="assets/icons/email.png" alt="Email" class="h-6 w-6" />
+                        <span class="text-sm sm:text-base">dmvavellanas@gmail.com</span>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/dana-vargas-b1790039b/" target="_blank" rel="noopener"
+                        class="flex items-center gap-3 text-white/90 hover:text-white transition">
+                        <img src="assets/icons/linkedin.png" alt="LinkedIn" class="h-6 w-6" />
+                        <span class="text-sm sm:text-base">LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center text-white/50 text-sm mt-12">
+            © 2025 Dana Vargas · Built with Angular
+        </p>
+
     </div>
-
-
 </div>

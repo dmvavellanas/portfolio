@@ -1,53 +1,102 @@
-<div class="p-6 bg-white text-gray-900">
-  <h2 class="text-2xl font-bold mb-4">{{ data.title }}</h2>
+<!-- Contenedor principal -->
+<div class="bg-white text-gray-900 rounded-2xl
+            w-full max-w-[900px]
+            max-h-[85vh] flex flex-col">
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="space-y-4">
-      <img (click)="openGallery(0)" [src]="data.imageSrc" [alt]="data.imageAlt" class="w-full rounded-xl object-cover" />
+  <!-- Header fijo -->
+  <div class="px-6 pt-6 pb-4 border-b border-gray-100">
+    <h2 class="text-2xl font-bold leading-snug">{{ data.title }}</h2>
+  </div>
 
-      @if (data.screenshots?.length) {
-        <div class="grid grid-cols-3 gap-2">
-          @for (s of data.screenshots; track s; let i = $index) {
-            <img (click)="openGallery(i)" [src]="s" alt="Screenshot" class="w-full h-20 rounded-lg object-cover" />
-          }
+  <div class="px-6 py-5 overflow-y-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Columna izquierda (media) -->
+      <div class="space-y-4">
+        <div class="rounded-xl bg-gray-50 border border-gray-100 overflow-hidden">
+          <img
+            (click)="openGallery(0)"
+            [src]="data.imageSrc"
+            [alt]="data.imageAlt"
+            class="w-full max-h-[32vh] md:max-h-[36vh]
+                   object-contain cursor-zoom-in"
+          />
         </div>
-      }
-    </div>
 
-    <div class="space-y-4 text-left">
-      <div>
-        <p class="font-semibold">Context</p>
-        <p class="text-gray-700">{{ data.context }}</p>
+        <!-- Miniaturas: máximo 3, la última con "View more" si hay más -->
+        @if (screenshots.length) {
+          <div class="grid grid-cols-3 gap-2">
+            @for (s of thumbsToShow; track s; let i = $index) {
+
+              <!-- Caso: última miniatura -->
+              @if (hasMoreScreenshots && i === 2) {
+                <button
+                  type="button"
+                  class="cursor-pointer relative rounded-lg overflow-hidden border border-gray-100 hover:border-gray-300 transition"
+                  (click)="openGallery(0)"
+                  aria-label="View more screenshots"
+                >
+                  <img [src]="s" alt="Screenshot preview" class="w-full h-20 object-cover" />
+                  <div class="absolute inset-0 bg-black/55 flex items-center justify-center">
+                    <span class="text-white text-sm font-semibold px-3 py-1 rounded-full bg-white/15">
+                      View more
+                    </span>
+                  </div>
+                </button>
+              }
+              @else {
+                <button
+                  type="button"
+                  class="block rounded-lg overflow-hidden border border-gray-100 hover:border-gray-300 transition"
+                  (click)="openGallery(i)"
+                >
+                  <img [src]="s" alt="Screenshot" class="w-full h-20 object-cover cursor-pointer" />
+                </button>
+              }
+
+            }
+          </div>
+        }
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Columna derecha (texto) -->
+      <div class="text-left space-y-4">
         <div>
-          <p class="font-semibold">Role</p>
-          <p class="text-gray-700">{{ data.role }}</p>
+          <p class="font-semibold">Context</p>
+          <p class="text-gray-700 leading-relaxed">{{ data.context }}</p>
         </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-semibold">Role</p>
+            <p class="text-gray-700">{{ data.role }}</p>
+          </div>
+          <div>
+            <p class="font-semibold">Stack</p>
+            <p class="text-gray-700">{{ data.stackText }}</p>
+          </div>
+        </div>
+
         <div>
-          <p class="font-semibold">Stack</p>
-          <p class="text-gray-700">{{ data.stackText }}</p>
+          <p class="font-semibold mb-2">What I did</p>
+          <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+            @for (item of data.whatIDid; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
         </div>
+
+        @if (data.notes) {
+          <p class="text-gray-500 text-sm">{{ data.notes }}</p>
+        }
       </div>
 
-      <div>
-        <p class="font-semibold mb-2">What I did</p>
-        <ul class="list-disc pl-5 space-y-1 text-gray-700">
-          @for (item of data.whatIDid; track item) {
-            <li>{{ item }}</li>
-          }
-        </ul>
-      </div>
-
-      @if (data.notes) {
-        <p class="text-gray-500 text-sm">{{ data.notes }}</p>
-      }
     </div>
   </div>
 
-  <div class="mt-6 flex justify-end">
-    <button mat-dialog-close class="px-4 py-2 rounded-lg bg-gray-900 text-white">
+  <!-- Footer fijo -->
+  <div class="px-6 py-4 border-t border-gray-100 flex justify-end">
+    <button mat-dialog-close class="px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 transition cursor-pointer">
       Close
     </button>
   </div>

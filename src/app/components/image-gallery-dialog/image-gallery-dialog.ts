@@ -1,5 +1,6 @@
 import { Component, HostListener, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogClose } from '@angular/material/dialog';
 
 export type ImageGalleryData = {
   title?: string;
@@ -9,7 +10,7 @@ export type ImageGalleryData = {
 
 @Component({
   selector: 'app-image-gallery-dialog',
-  imports: [],
+  imports: [MatDialogClose],
   templateUrl: './image-gallery-dialog.html',
   styleUrl: './image-gallery-dialog.scss',
 })

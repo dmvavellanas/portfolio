@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ProjectCard, TechIcon } from '../../components/project-card/project-card';
 import { ProjectDialog, ProjectDialogData } from '../../components/project-dialog/project-dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FishBackground } from '../../components/fish-background/fish-background';
 
 type ProjectCardVM = ProjectDialogData & {
   techIcons: TechIcon[];
@@ -10,7 +12,9 @@ type ProjectCardVM = ProjectDialogData & {
 @Component({
   selector: 'app-home',
   imports: [
-    ProjectCard
+    ProjectCard,
+    MatTooltipModule,
+    FishBackground
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -57,7 +61,7 @@ export class Home {
       ],
       context:
         'Over several years, the client had stored financial movements and endorsements in Excel files. These historical records needed to be migrated into the new enterprise application in a structured and reliable way.',
-      role: 'Back-end Software Developer',
+      role: 'Back-End Software Developer',
       stackText: 'n8n, PostgreSQL',
       whatIDid: [
         'Designed and implemented an ETL pipeline using n8n to process Excel files containing historical data.',

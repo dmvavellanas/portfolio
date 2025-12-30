@@ -1,0 +1,20 @@
+<!-- Overlay no interactivo -->
+<div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+  @for (f of fishes; track f) {
+    <div
+      class="absolute select-none"
+      [style.left.px]="f.x"
+      [style.top.px]="f.y"
+      [style.opacity]="f.opacity"
+      [style.transform]="'translate(-50%, -50%) rotate(' + f.rot + 'deg)'"
+    >
+      <!-- Pez simple: emoji. Puede cambiarlo por SVG/PNG -->
+      <div
+        [style.fontSize.px]="f.size"
+        class="drop-shadow-sm"
+      >
+        🐟
+      </div>
+    </div>
+  }
+</div>

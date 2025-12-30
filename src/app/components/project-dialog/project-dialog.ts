@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ImageGalleryData, ImageGalleryDialog } from '../image-gallery-dialog/image-gallery-dialog';
+import { MatDialogClose } from '@angular/material/dialog';
 
 export type ProjectDialogData = {
   title: string;
@@ -16,7 +17,7 @@ export type ProjectDialogData = {
 
 @Component({
   selector: 'app-project-dialog',
-  imports: [],
+  imports: [MatDialogClose],
   templateUrl: './project-dialog.html',
   styleUrl: './project-dialog.scss',
 })
@@ -24,7 +25,7 @@ export class ProjectDialog {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ProjectDialogData,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   public openGallery(startIndex: number = 0): void {
     const images = this.data.screenshots?.length
@@ -41,5 +42,18 @@ export class ProjectDialog {
       width: '98vw',
       panelClass: 'gallery-dialog-panel',
     });
+  }
+
+  public get screenshots(): string[] {
+    return this.data.screenshots ?? [];
+  }
+
+  public get hasMoreScreenshots(): boolean {
+    return this.screenshots.length > 3;
+  }
+
+  public get thumbsToShow(): string[] {
+    if (this.screenshots.length <= 3) return this.screenshots;
+    return this.screenshots.slice(0, 3);
   }
 }
