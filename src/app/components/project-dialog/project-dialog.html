@@ -3,12 +3,12 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div class="space-y-4">
-      <img [src]="data.imageSrc" [alt]="data.imageAlt" class="w-full rounded-xl object-cover" />
+      <img (click)="openGallery(0)" [src]="data.imageSrc" [alt]="data.imageAlt" class="w-full rounded-xl object-cover" />
 
       @if (data.screenshots?.length) {
         <div class="grid grid-cols-3 gap-2">
-          @for (s of data.screenshots; track s) {
-            <img [src]="s" alt="Screenshot" class="w-full h-20 rounded-lg object-cover" />
+          @for (s of data.screenshots; track s; let i = $index) {
+            <img (click)="openGallery(i)" [src]="s" alt="Screenshot" class="w-full h-20 rounded-lg object-cover" />
           }
         </div>
       }
