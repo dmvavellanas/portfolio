@@ -1,1 +1,54 @@
-<p>project-dialog works!</p>
+<div class="p-6 bg-white text-gray-900">
+  <h2 class="text-2xl font-bold mb-4">{{ data.title }}</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="space-y-4">
+      <img [src]="data.imageSrc" [alt]="data.imageAlt" class="w-full rounded-xl object-cover" />
+
+      @if (data.screenshots?.length) {
+        <div class="grid grid-cols-3 gap-2">
+          @for (s of data.screenshots; track s) {
+            <img [src]="s" alt="Screenshot" class="w-full h-20 rounded-lg object-cover" />
+          }
+        </div>
+      }
+    </div>
+
+    <div class="space-y-4 text-left">
+      <div>
+        <p class="font-semibold">Context</p>
+        <p class="text-gray-700">{{ data.context }}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <p class="font-semibold">Role</p>
+          <p class="text-gray-700">{{ data.role }}</p>
+        </div>
+        <div>
+          <p class="font-semibold">Stack</p>
+          <p class="text-gray-700">{{ data.stackText }}</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-2">What I did</p>
+        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+          @for (item of data.whatIDid; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+
+      @if (data.notes) {
+        <p class="text-gray-500 text-sm">{{ data.notes }}</p>
+      }
+    </div>
+  </div>
+
+  <div class="mt-6 flex justify-end">
+    <button mat-dialog-close class="px-4 py-2 rounded-lg bg-gray-900 text-white">
+      Close
+    </button>
+  </div>
+</div>

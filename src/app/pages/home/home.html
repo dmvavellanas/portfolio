@@ -32,28 +32,33 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @for (p of projects; track p.title) {
             <app-project-card [title]="p.title" [imageSrc]="p.imageSrc" [imageAlt]="p.imageAlt"
-                [techIcons]="p.techIcons">
+                [techIcons]="p.techIcons" (cardClick)="openProject(p)">
             </app-project-card>
             }
         </div>
     </div>
 
     <div class="w-full max-w-5xl px-6 mt-20 pb-16">
-    <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
+        <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
 
-    <div class="bg-white/15 rounded-2xl px-6 py-8">
-      <div class="flex flex-wrap justify-center gap-6">
-        <img src="assets/icons/angular.svg" alt="Angular" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/dotnet.svg" alt=".NET" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/postgres.png" alt="PostgreSQL" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/docker.png" alt="Docker" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/git.png" alt="Git" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/n8n.png" alt="n8n" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/odoo.png" alt="Odoo" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-        <img src="assets/icons/wordpress.png" alt="WordPress" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
-      </div>
+        <div class="bg-white/15 rounded-2xl px-6 py-8">
+            <div class="flex flex-wrap justify-center gap-6">
+                <img src="assets/icons/angular.svg" alt="Angular"
+                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/dotnet.svg" alt=".NET"
+                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/postgres.png" alt="PostgreSQL"
+                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/docker.png" alt="Docker"
+                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/git.png" alt="Git" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/n8n.png" alt="n8n" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/odoo.png" alt="Odoo" class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+                <img src="assets/icons/wordpress.png" alt="WordPress"
+                    class="h-10 w-10 opacity-80 hover:opacity-100 transition" />
+            </div>
+        </div>
     </div>
-  </div>
 
 
 </div>

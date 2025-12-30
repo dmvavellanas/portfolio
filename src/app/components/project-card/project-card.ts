@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export type TechIcon = {
   src: string;
@@ -16,4 +16,10 @@ export class ProjectCard {
   @Input() imageSrc: string = 'https://via.placeholder.com/600x300';
   @Input() imageAlt: string = 'Project image';
   @Input() techIcons: TechIcon[] = [];
+
+  @Output() cardClick = new EventEmitter<void>();
+
+  public onClick(): void {
+    this.cardClick.emit();
+  }
 }
